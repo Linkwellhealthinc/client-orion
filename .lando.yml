@@ -1,0 +1,11 @@
+name: client-orion
+recipe: lamp
+config:
+  webroot: web
+  php: '8.0'
+  via: apache
+  database: mysql
+  xdebug: true
+proxy:
+  appserver:
+    - local.client-orion.linkwellhealth.com
