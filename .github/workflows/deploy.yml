@@ -16,5 +16,6 @@ jobs:
           debug: true
           script: |
             cd ${{ secrets.CANDIDATE_CLIENT_ORION_DOCROOT }}
+            git fetch origin prod
             git checkout prod
             git pull origin prod
