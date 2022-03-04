@@ -1,0 +1,20 @@
+name: Deploy to Digital Ocean Client Orion
+on:
+  push:
+    branches:
+      - prod
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Digital Ocean Client Orion
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.CANDIDATE_CLIENT_ORION_HOST }}
+          username: ${{ secrets.CANDIDATE_CLIENT_ORION_USERNAME }}
+          password: ${{ secrets.CANDIDATE_CLIENT_ORION_PASSWORD }}
+          debug: true
+          script: |
+            cd ${{ secrets.CANDIDATE_CLIENT_ORION_DOCROOT }}
+            git checkout prod
+            git pull origin prod
